@@ -4,7 +4,6 @@ describe('Validate front-end', () => {
 	});
 
 	beforeEach(() => {
-        // cy.resetSession();
         cy.get('.header_user_info > a.login').should('be.visible').click();
     });
     
@@ -60,20 +59,17 @@ describe('Validate front-end', () => {
             cy.get('input#adresse').scrollIntoView().type('2, rue du 4 septembre');
             cy.get('input#adresseDetail').scrollIntoView().type('escalier B, 4e étage');
             cy.get('input#adresseDetail2').scrollIntoView().type('Bâtiment Les Dahlias');
-            cy.get('input#ville').should('be.empty');
-            cy.get('input#codePostal').scrollIntoView().type('75013');
-            cy.get('input#lieuDit').click();
-            // if(cy.get('input#ville').should('match', 'Paris')){
-                // alert('La ville na pas été remplie');
-            // }
-            // else{
-                // alert('La ville a été remplie');
-            // }
-            // cy.get('input#ville').should('match', 'Paris');           
             cy.get('input#telephonePortable').scrollIntoView().type('0623456789');
             cy.get('input#telephoneFixe').scrollIntoView().type('01523456789');
             cy.get('label.CheckboxPerso2').scrollIntoView().click();
 
+            
+            cy.get('input#ville').should('be.empty');
+            cy.get('input#codePostal').scrollIntoView().type('75013');
+            cy.get('input#lieuDit').click();
+            cy.log(`cy.get('input#ville').should('match', 'Paris'); >> This verification is in error`)
+            cy.get('input#ville').should('match', 'Paris');
+            
             cy.get('a#BtnCreationSubmit').scrollIntoView().click();
         });
         cy.get('#TunnelDeCommande').should('not.be.visible');
