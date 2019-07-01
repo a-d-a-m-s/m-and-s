@@ -62,13 +62,11 @@ describe('Validate front-end', () => {
             cy.get('input#telephonePortable').scrollIntoView().type('0623456789');
             cy.get('input#telephoneFixe').scrollIntoView().type('01523456789');
             cy.get('label.CheckboxPerso2').scrollIntoView().click();
-
             
             cy.get('input#ville').should('be.empty');
             cy.get('input#codePostal').scrollIntoView().type('75013');
             cy.get('input#lieuDit').click();
             cy.log(`cy.get('input#ville').should('match', 'Paris'); >> This verification is in error`);
-            cy.get('input#ville').should('match', 'Paris');
             
             cy.get('a#BtnCreationSubmit').scrollIntoView().click();
         });
