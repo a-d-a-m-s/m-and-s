@@ -13,13 +13,12 @@ describe('Validate front-end', () => {
         cy.get('form#login_form').should('be.visible').within(() => {
             cy.get('input#email').type('test@test.com');
             cy.get('input#passwd').type('ThisIs@T3st');
-
             cy.get('button#SubmitLogin').click();
         }); 
         cy.get('.alert').should('be.visible');  
     });
 
-    it('should check if the validation tooltip appears', () => {
+    it('should check if the username validation tooltip appears', () => {
         cy.get('form#login_form').should('be.visible').within(() => {
             cy.get('input#email').parent().should('not.have.class', 'form-ok');
             cy.get('input#email').type('test@test.com');
