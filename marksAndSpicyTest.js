@@ -65,10 +65,10 @@ describe('Validate front-end', () => {
             cy.get('input#ville').should('be.empty');
             cy.get('input#codePostal').scrollIntoView().type('75013');
             cy.get('input#lieuDit').click();
-            cy.log(`cy.get('input#ville').should('match', 'Paris');`); // This verification is in error
+            cy.get('input#ville').should('match', 'Paris'); // This verification is in error
             
-            cy.get('a#BtnCreationSubmit').scrollIntoView().click(); // This action does not produce the expected outcome
+            cy.get('a#BtnCreationSubmit').scrollIntoView().click(); // This action cannot succeed because the input#ville field remains blank
         });
-        cy.log(`cy.get('#TunnelDeCommande').should('not.be.visible');`); // This verification is in error
+        cy.get('#TunnelDeCommande').should('not.be.visible'); // This verification is in error
     });
 });
